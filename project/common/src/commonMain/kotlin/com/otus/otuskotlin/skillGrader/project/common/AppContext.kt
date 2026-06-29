@@ -16,6 +16,7 @@ data class AppContext(
     var state: AppState = AppState.NONE,
     val errors: MutableList<AppError> = mutableListOf(),
 
+    var corSettings: AppCorSettings = AppCorSettings(),
     var workMode: AppWorkMode = AppWorkMode.PROD,
     var stubCase: AppStubs = AppStubs.NONE,
     var wsSession: IWsSession = IWsSession.NONE,
@@ -24,6 +25,12 @@ data class AppContext(
     var timeStart: Instant = Instant.NONE,
     var ruleRequest: AppRule = AppRule(),
     var ruleFilterRequest: AppRuleFilter = AppRuleFilter(),
+
+    var ruleValidating: AppRule = AppRule(),
+    var ruleFilterValidating: AppRuleFilter = AppRuleFilter(),
+
+    var ruleValidated: AppRule = AppRule(),
+    var ruleFilterValidated: AppRuleFilter = AppRuleFilter(),
 
     var ruleResponse: AppRule = AppRule(),
     var rulesResponse: MutableList<AppRule> = mutableListOf(),

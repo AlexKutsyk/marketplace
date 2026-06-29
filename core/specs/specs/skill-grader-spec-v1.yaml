@@ -414,6 +414,10 @@ components:
         - notFound
         - badId
         - badName
-        - badDescription
+        - badMinGrammarPercent
+        - badMinLexiconsPercent
+        - badMinListeningPercent
+        - badTimeWindowDays
+        - badPriority
         - canNotDelete
         - bedSearchString

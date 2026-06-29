@@ -12,6 +12,10 @@ data class AppRule(
     var lock: AppRuleLock = AppRuleLock.NONE,
     val permissionsClient: MutableSet<AppRulePermissionClient> = mutableSetOf(),
 ) {
+    fun deepCopy(): AppRule = copy(
+        permissionsClient = permissionsClient.toMutableSet(),
+    )
+
     fun isEmpty() = this == NONE
 
     companion object {

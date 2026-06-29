@@ -58,7 +58,11 @@ private fun RuleDebug?.transportToStubCase(): AppStubs = when (this?.stub) {
     RuleRequestDebugStubs.NOT_FOUND -> AppStubs.NOT_FOUND
     RuleRequestDebugStubs.BAD_ID -> AppStubs.BAD_ID
     RuleRequestDebugStubs.BAD_NAME -> AppStubs.BAD_NAME
-    RuleRequestDebugStubs.BAD_DESCRIPTION -> AppStubs.BAD_DESCRIPTION
+    RuleRequestDebugStubs.BAD_MIN_GRAMMAR_PERCENT -> AppStubs.BAD_MIN_GRAMMAR_PERCENT
+    RuleRequestDebugStubs.BAD_MIN_LEXICONS_PERCENT -> AppStubs.BAD_MIN_LEXICONS_PERCENT
+    RuleRequestDebugStubs.BAD_MIN_LISTENING_PERCENT -> AppStubs.BAD_MIN_LISTENING_PERCENT
+    RuleRequestDebugStubs.BAD_TIME_WINDOW_DAYS -> AppStubs.BAD_TIME_WINDOW_DAYS
+    RuleRequestDebugStubs.BAD_PRIORITY -> AppStubs.BAD_PRIORITY
     RuleRequestDebugStubs.CAN_NOT_DELETE -> AppStubs.CANNOT_DELETE
     RuleRequestDebugStubs.BED_SEARCH_STRING -> AppStubs.BAD_SEARCH_STRING
     null -> AppStubs.NONE
