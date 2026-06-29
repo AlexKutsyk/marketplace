@@ -4,7 +4,6 @@ import ICorChainBuilder
 import com.otus.otuskotlin.skillGrader.logging.common.LogLevel
 import com.otus.otuskotlin.skillGrader.project.common.AppContext
 import com.otus.otuskotlin.skillGrader.project.common.AppCorSettings
-import com.otus.otuskotlin.skillGrader.project.common.models.AppGrade
 import com.otus.otuskotlin.skillGrader.project.common.models.AppState
 import com.otus.otuskotlin.skillGrader.project.common.stubs.AppStubs
 import com.otus.otuskotlin.skillGrader.project.stubs.AppRuleStub

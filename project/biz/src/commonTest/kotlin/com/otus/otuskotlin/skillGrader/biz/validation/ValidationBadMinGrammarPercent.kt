@@ -5,7 +5,6 @@ import com.otus.otuskotlin.skillGrader.project.common.AppContext
 import com.otus.otuskotlin.skillGrader.project.common.models.AppCommand
 import com.otus.otuskotlin.skillGrader.project.common.models.AppGrade
 import com.otus.otuskotlin.skillGrader.project.common.models.AppRule
-import com.otus.otuskotlin.skillGrader.project.common.models.AppRuleId
 import com.otus.otuskotlin.skillGrader.project.common.models.AppRuleLock
 import com.otus.otuskotlin.skillGrader.project.common.models.AppState
 import com.otus.otuskotlin.skillGrader.project.common.models.AppWorkMode
