@@ -1,0 +1,51 @@
+# Конфигурация для spring + (в перспективе) postgresql
+
+version: '3.9'
+services:
+  app-ktor:
+    image: app-ktor-jvm:0.0.1
+    ports:
+      - "8080"
+    environment:
+      DB_TYPE_PROD: "psql"
+      MKPLADS_HOST: "psql"
+      MKPLADS_PORT: 5432
+      MKPLADS_DB: "skill-grader_rules"
+      MKPLADS_USER: "postgres"
+      MKPLADS_PASS: "skill-grader-pass"
+    depends_on:
+      psql:
+        condition: service_healthy
+      liquibase:
+        condition: service_completed_successfully
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/"]
+
+
+  psql:
+    image: postgres
+#    ports:
+#      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: "skill-grader-pass"
+      POSTGRES_USER: "postgres"
+      POSTGRES_DB: "skill-grader_rules"
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  liquibase:
+    image: "migration-pg:0.1.0"
+    environment:
+      LIQUIBASE_URL:
+      LIQUIBASE_COMMAND_URL: jdbc:postgresql://psql:5432/skill-grader_rules
+      LIQUIBASE_COMMAND_USERNAME: postgres
+      LIQUIBASE_COMMAND_PASSWORD: "skill-grader-pass"
+      LIQUIBASE_LIQUIBASE_SCHEMA_NAME: public
+    #      tableName: skill-grader_rules
+
+    depends_on:
+      psql:
+        condition: service_healthy

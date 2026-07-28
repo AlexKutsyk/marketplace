@@ -1,4 +1,4 @@
-package com.otus.otuskotlin.skillGrader.project.biz.general
+package com.otus.otuskotlin.skillGrader.project.biz.stubs
 
 import ICorChainBuilder
 import chain

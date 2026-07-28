@@ -1,17 +1,17 @@
 package com.otus.otuskotlin.skillGrader.project.mappers.v1
 
-import com.otus.otuskotlin.skillGrader.api.v1.models.Error
-import com.otus.otuskotlin.skillGrader.api.v1.models.Grade
-import com.otus.otuskotlin.skillGrader.api.v1.models.IResponse
-import com.otus.otuskotlin.skillGrader.api.v1.models.ResponseResult
-import com.otus.otuskotlin.skillGrader.api.v1.models.RuleCreateResponse
-import com.otus.otuskotlin.skillGrader.api.v1.models.RuleDeleteResponse
-import com.otus.otuskotlin.skillGrader.api.v1.models.RuleInitResponse
-import com.otus.otuskotlin.skillGrader.api.v1.models.RulePermissions
-import com.otus.otuskotlin.skillGrader.api.v1.models.RuleReadResponse
-import com.otus.otuskotlin.skillGrader.api.v1.models.RuleResponseObject
-import com.otus.otuskotlin.skillGrader.api.v1.models.RuleSearchResponse
-import com.otus.otuskotlin.skillGrader.api.v1.models.RuleUpdateResponse
+import com.otus.otuskotlin.skillGrader.project.api.v1.models.Error
+import com.otus.otuskotlin.skillGrader.project.api.v1.models.Grade
+import com.otus.otuskotlin.skillGrader.project.api.v1.models.IResponse
+import com.otus.otuskotlin.skillGrader.project.api.v1.models.ResponseResult
+import com.otus.otuskotlin.skillGrader.project.api.v1.models.RuleCreateResponse
+import com.otus.otuskotlin.skillGrader.project.api.v1.models.RuleDeleteResponse
+import com.otus.otuskotlin.skillGrader.project.api.v1.models.RuleInitResponse
+import com.otus.otuskotlin.skillGrader.project.api.v1.models.RulePermissions
+import com.otus.otuskotlin.skillGrader.project.api.v1.models.RuleReadResponse
+import com.otus.otuskotlin.skillGrader.project.api.v1.models.RuleResponseObject
+import com.otus.otuskotlin.skillGrader.project.api.v1.models.RuleSearchResponse
+import com.otus.otuskotlin.skillGrader.project.api.v1.models.RuleUpdateResponse
 import com.otus.otuskotlin.skillGrader.project.common.exceptions.UnknownAppCommand
 import com.otus.otuskotlin.skillGrader.project.common.AppContext
 import com.otus.otuskotlin.skillGrader.project.common.models.AppCommand
@@ -75,13 +75,14 @@ fun List<AppRule>.toTransportRule(): List<RuleResponseObject>? = this
 
 fun AppRule.toTransportRule(): RuleResponseObject = RuleResponseObject(
     id = id.toTransportRule(),
-    name = name.takeIf{ it.isNotBlank()},
+    name = name.takeIf { it.isNotBlank() },
     grade = grade.toTransportRule(),
     minGrammarPercent = minGrammarPercent,
     minLexiconsPercent = minLexiconsPercent,
     minListeningPercent = minListeningPercent,
     timeWindowDays = timeWindowDays,
     priority = priority,
+    lock = lock.toTransportRule(),
     permissions = permissionsClient.toTransportRule()
 )
 
@@ -118,7 +119,7 @@ private fun AppState.toResult(): ResponseResult? = when (this) {
 }
 
 internal fun AppGrade.toTransportRule(): Grade? =
-    when(this) {
+    when (this) {
         AppGrade.A1 -> Grade.A1
         AppGrade.A2 -> Grade.A2
         AppGrade.B1 -> Grade.B1

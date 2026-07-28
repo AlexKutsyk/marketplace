@@ -1,8 +1,3 @@
-//plugins {
-//    id("build-jvm")
-//    id("maven-publish")
-//}
-
 group = "com.otus.otuskotlin.skillGrader"
 version = "0.0.1"
 
@@ -21,6 +16,8 @@ tasks {
         dependsOn(project(":dcompose").getTasksByName("publish",false))
         dependsOn(project(":specs").getTasksByName("publish",false))
         dependsOn(project(":swagger").getTasksByName("buildImages",false))
+        dependsOn(project(":migration-pg").getTasksByName("buildImages",false))
+        dependsOn(project(":migration-cs").getTasksByName("buildImages",false))
     }
 
     register("clean" ) {

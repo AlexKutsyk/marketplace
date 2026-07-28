@@ -2,8 +2,8 @@ package com.otus.otuskotlin.skillGrader.project.jackson
 
 import com.fasterxml.jackson.databind.MapperFeature
 import com.fasterxml.jackson.databind.json.JsonMapper
-import com.otus.otuskotlin.skillGrader.api.v1.models.IRequest
-import com.otus.otuskotlin.skillGrader.api.v1.models.IResponse
+import com.otus.otuskotlin.skillGrader.project.api.v1.models.IRequest
+import com.otus.otuskotlin.skillGrader.project.api.v1.models.IResponse
 
 val apiV1Mapper = JsonMapper.builder().run {
 //    configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)

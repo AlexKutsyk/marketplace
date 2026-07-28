@@ -323,6 +323,8 @@ components:
           properties:
             id:
               $ref: '#/components/schemas/RuleId'
+            lock:
+              $ref: '#/components/schemas/RuleLock'
             permissions:
               type: array
               uniqueItems: true

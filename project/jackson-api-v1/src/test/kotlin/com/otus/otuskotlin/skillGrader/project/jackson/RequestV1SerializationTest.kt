@@ -1,13 +1,12 @@
 package com.otus.otuskotlin.skillGrader.project.jackson
 
-import com.otus.otuskotlin.skillGrader.api.v1.models.Grade
-import com.otus.otuskotlin.skillGrader.api.v1.models.IRequest
-import com.otus.otuskotlin.skillGrader.api.v1.models.RuleCreateObject
-import com.otus.otuskotlin.skillGrader.api.v1.models.RuleCreateRequest
-import com.otus.otuskotlin.skillGrader.api.v1.models.RuleDebug
-import com.otus.otuskotlin.skillGrader.api.v1.models.RuleRequestDebugMode
-import com.otus.otuskotlin.skillGrader.api.v1.models.RuleRequestDebugStubs
-import com.otus.otuskotlin.skillGrader.project.jackson.apiV1Mapper
+import com.otus.otuskotlin.skillGrader.project.api.v1.models.Grade
+import com.otus.otuskotlin.skillGrader.project.api.v1.models.IRequest
+import com.otus.otuskotlin.skillGrader.project.api.v1.models.RuleCreateObject
+import com.otus.otuskotlin.skillGrader.project.api.v1.models.RuleCreateRequest
+import com.otus.otuskotlin.skillGrader.project.api.v1.models.RuleDebug
+import com.otus.otuskotlin.skillGrader.project.api.v1.models.RuleRequestDebugMode
+import com.otus.otuskotlin.skillGrader.project.api.v1.models.RuleRequestDebugStubs
 import kotlin.test.Test
 import kotlin.test.assertContains
 import kotlin.test.assertEquals

@@ -10,11 +10,11 @@ ktor:
     - resources
   application:
     modules:
-      - "ru.otus.otuskotlin.marketplace.app.ktor.ApplicationKt.module"
-#  urls:
-#    - "http://127.0.0.1:8080/v1"
-#    - "http://0.0.0.0:8080/v1"
-#    - "http://192.168.0.182:8080/v1"
+      - "com.otus.otuskotlin.skillGrader.project.ktor.ApplicationKt.module"
+  #  urls:
+  #    - "http://127.0.0.1:8080/v1"
+  #    - "http://0.0.0.0:8080/v1"
+  #    - "http://192.168.0.182:8080/v1"
   logger: kmp
 #  # Логирование типа socket требует установки в fluent-bit.conf
 #  # [INPUT]
@@ -24,3 +24,16 @@ ktor:
 #  logger: socket
 #  socketLogger:
 #    port: 24224
+
+marketplace:
+  repository:
+    test: "inmemory"
+    prod: "$DB_TYPE_PROD:inmemory"
+
+    psql:
+      schema: public
+      database: "$APP_RULES_DB:skill-grader-rules"
+      host: "$APP_RULES_HOST:localhost"
+      port: "$APP_RULES_PORT:5432"
+      user: "$APP_RULES_USER:postgres"
+      password: "$APP_RULES_PASS:skill-grader-pass"
