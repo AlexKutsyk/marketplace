@@ -1,4 +1,5 @@
 [versions]
+self-libs = "0.0.1"
 kotlin = "2.3.10"
 shadow = "9.3.2"
 kotlinx-datetime = "0.7.1"
@@ -12,6 +13,10 @@ kotest = "6.1.11"
 kermit = "2.0.3"
 ktor = "3.4.3"
 atomic-fu = "0.33.0"
+sqlx4k = "1.9.1"
+
+#Testing
+testcontainers = "2.0.4"
 
 # BASE
 jvm-compiler = "21"
@@ -27,20 +32,21 @@ coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", ve
 coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutines" }
 kotlinx-atomicfu = { module = "org.jetbrains.kotlinx:atomicfu", version.ref = "atomic-fu" }
 cor = { module = "com.otus.otuskotlin.skillGrader.libs:lib-cor" }
+uuid = "com.benasher44:uuid:0.8.4"
 
 jackson-kotlin = { module = "com.fasterxml.jackson.module:jackson-module-kotlin", version.ref = "jackson" }
 jackson-datatype = { module = "com.fasterxml.jackson.datatype:jackson-datatype-jsr310", version.ref = "jackson" }
 
 # Internal modules
-dcompose = "com.otus.otuskotlin.skillGrader:dcompose:0.1"
-specs = "com.otus.otuskotlin.skillGrader:specs:0.0.1"
+dcompose = "com.otus.otuskotlin.skillGrader:dcompose:1.0"
+specs = "com.otus.otuskotlin.skillGrader.core:specs:0.0.1"
 
 # Logging
-logback = { module = "ch.qos.logback:logback-classic", version.ref = "logback" }
-logback-appenders = { module = "com.sndyuk:logback-more-appenders", version = "1.8.8" }
-logback-logstash = { module = "net.logstash.logback:logstash-logback-encoder", version = "7.4" }
-kermit = { module = "co.touchlab:kermit", version.ref = "kermit" }
-logger-fluentd = { module = "org.fluentd:fluent-logger", version = "0.3.4" }
+#logback = { module = "ch.qos.logback:logback-classic", version.ref = "logback" }
+#logback-appenders = { module = "com.sndyuk:logback-more-appenders", version = "1.8.8" }
+#logback-logstash = { module = "net.logstash.logback:logstash-logback-encoder", version = "7.4" }
+#kermit = { module = "co.touchlab:kermit", version.ref = "kermit" }
+#logger-fluentd = { module = "org.fluentd:fluent-logger", version = "0.3.4" }
 
 # Ktor
 ktor-network = { module = "io.ktor:ktor-network", version.ref = "ktor" }
@@ -61,6 +67,35 @@ ktor-server-negotiation = { module = "io.ktor:ktor-server-content-negotiation", 
 ktor-server-calllogging = { module = "io.ktor:ktor-server-call-logging", version.ref = "ktor" }
 ktor-server-test = { module = "io.ktor:ktor-server-test-host", version.ref = "ktor" }
 ktor-server-websocket = { module = "io.ktor:ktor-server-websockets", version.ref = "ktor" }
+
+# Databases
+db-cache4k = "io.github.reactivecircus.cache4k:cache4k:0.13.0"
+sqlx4k-postgres = { module = "io.github.smyrgeorge:sqlx4k-postgres", version.ref = "sqlx4k" }
+
+# Logging
+logback = { module = "ch.qos.logback:logback-classic", version.ref = "logback" }
+logback-appenders = { module = "com.sndyuk:logback-more-appenders", version = "1.8.8" }
+logback-logstash = { module = "net.logstash.logback:logstash-logback-encoder", version = "7.4" }
+kermit = { module = "co.touchlab:kermit", version.ref = "kermit" }
+logger-fluentd = { module = "org.fluentd:fluent-logger", version = "0.3.4" }
+
+# SelfLibs
+self-lib-sysenv = { module = "com.otus.otuskotlin.skillGrader.libs:lib-sysenv", version.ref = "self-libs" }
+self-lib-logs-common = { module = "com.otus.otuskotlin.skillGrader.libs:lib-logging-common", version.ref = "self-libs" }
+self-lib-logs-kermit = { module = "com.otus.otuskotlin.skillGrader.libs:lib-logging-kermit", version.ref = "self-libs" }
+self-lib-logs-socket = { module = "com.otus.otuskotlin.skillGrader.libs:lib-logging-socket", version.ref = "self-libs" }
+
+# Testing
+kotest-junit5 = { module = "io.kotest:kotest-runner-junit5", version.ref = "kotest" }
+kotest-core = { module = "io.kotest:kotest-assertions-core", version.ref = "kotest" }
+kotest-property = { module = "io.kotest:kotest-property", version.ref = "kotest" }
+
+testcontainers-core = { module = "org.testcontainers:testcontainers", version.ref = "testcontainers" }
+testcontainers-postgres = { module = "org.testcontainers:testcontainers-postgresql", version.ref = "testcontainers" }
+
+[bundles]
+#kotest = ["kotest-junit5", "kotest-core", "kotest-datatest", "kotest-property"]
+kotest = ["kotest-junit5", "kotest-core", "kotest-property"]
 
 [plugins]
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }

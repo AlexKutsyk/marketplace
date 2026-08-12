@@ -7,6 +7,7 @@ import com.otus.otuskotlin.skillGrader.project.common.models.AppRule
 import com.otus.otuskotlin.skillGrader.project.common.models.AppRuleFilter
 import com.otus.otuskotlin.skillGrader.project.common.models.AppState
 import com.otus.otuskotlin.skillGrader.project.common.models.AppWorkMode
+import com.otus.otuskotlin.skillGrader.project.common.repo.IRepoRule
 import com.otus.otuskotlin.skillGrader.project.common.stubs.AppStubs
 import com.otus.otuskotlin.skillGrader.project.common.ws.IWsSession
 import kotlin.time.Instant
@@ -31,6 +32,12 @@ data class AppContext(
 
     var ruleValidated: AppRule = AppRule(),
     var ruleFilterValidated: AppRuleFilter = AppRuleFilter(),
+
+    var ruleRepo: IRepoRule = IRepoRule.NONE,
+    var ruleRepoRead: AppRule = AppRule(), // То, что прочитали из репозитория
+    var ruleRepoPrepare: AppRule = AppRule(), // То, что готовим для сохранения в БД
+    var ruleRepoDone: AppRule = AppRule(),  // Результат, полученный из БД
+    var rulesRepoDone: MutableList<AppRule> = mutableListOf(),
 
     var ruleResponse: AppRule = AppRule(),
     var rulesResponse: MutableList<AppRule> = mutableListOf(),

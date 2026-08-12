@@ -2,7 +2,20 @@ package com.otus.otuskotlin.skillGrader.project.biz
 
 import com.otus.otuskotlin.skillGrader.project.biz.general.initStatus
 import com.otus.otuskotlin.skillGrader.project.biz.general.operation
-import com.otus.otuskotlin.skillGrader.project.biz.general.stubs
+import com.otus.otuskotlin.skillGrader.project.biz.repo.checkLock
+import com.otus.otuskotlin.skillGrader.project.biz.repo.initRepo
+import com.otus.otuskotlin.skillGrader.project.biz.repo.prepareResult
+import com.otus.otuskotlin.skillGrader.project.biz.repo.repo
+import com.otus.otuskotlin.skillGrader.project.biz.repo.repoCreate
+import com.otus.otuskotlin.skillGrader.project.biz.repo.repoDelete
+import com.otus.otuskotlin.skillGrader.project.biz.repo.repoPrepareCreate
+import com.otus.otuskotlin.skillGrader.project.biz.repo.repoDoneRead
+import com.otus.otuskotlin.skillGrader.project.biz.repo.repoPrepareDelete
+import com.otus.otuskotlin.skillGrader.project.biz.repo.repoPrepareUpdate
+import com.otus.otuskotlin.skillGrader.project.biz.repo.repoRead
+import com.otus.otuskotlin.skillGrader.project.biz.repo.repoSearch
+import com.otus.otuskotlin.skillGrader.project.biz.repo.repoUpdate
+import com.otus.otuskotlin.skillGrader.project.biz.stubs.stubs
 import com.otus.otuskotlin.skillGrader.project.biz.stubs.stubCreateSuccess
 import com.otus.otuskotlin.skillGrader.project.common.AppContext
 import com.otus.otuskotlin.skillGrader.project.common.AppCorSettings
@@ -48,6 +61,7 @@ class RuleProcessor(val corSettings: AppCorSettings = AppCorSettings.NONE) {
 
     private val businessChain = rootChain<AppContext> {
         initStatus("Инициализация статуса")
+        initRepo("Инициализация репозитория")
 
         operation("Создание объявления", AppCommand.CREATE) {
             stubs("Обработка стабов") {
@@ -75,6 +89,11 @@ class RuleProcessor(val corSettings: AppCorSettings = AppCorSettings.NONE) {
 
                 finishRuleValidation("Завершение проверок")
             }
+            repo("Логика сохранения") {
+                repoPrepareCreate("Подготовка объекта для сохранения")
+                repoCreate("Создание объявления в БД")
+            }
+            prepareResult("Подготовка ответа")
         }
         operation("Получить объявление", AppCommand.READ) {
             stubs("Обработка стабов") {
@@ -91,6 +110,11 @@ class RuleProcessor(val corSettings: AppCorSettings = AppCorSettings.NONE) {
 
                 finishRuleValidation("Успешное завершение процедуры валидации")
             }
+            repo("Логика чтения") {
+                repoRead("Чтение правила из БД")
+                repoDoneRead("Подготовка ответа для Read")
+            }
+            prepareResult("Подготовка ответа")
         }
         operation("Изменить объявление", AppCommand.UPDATE) {
             stubs("Обработка стабов") {
@@ -124,6 +148,13 @@ class RuleProcessor(val corSettings: AppCorSettings = AppCorSettings.NONE) {
 
                 finishRuleValidation("Успешное завершение процедуры валидации")
             }
+            repo("Логика сохранения") {
+                repoRead("Чтение объявления из БД")
+                checkLock("Проверяем консистентность по оптимистичной блокировке")
+                repoPrepareUpdate("Подготовка объекта для обновления")
+                repoUpdate("Обновление объявления в БД")
+            }
+            prepareResult("Подготовка ответа")
         }
         operation("Удалить правило", AppCommand.DELETE) {
             stubs("Обработка стабов") {
@@ -142,6 +173,13 @@ class RuleProcessor(val corSettings: AppCorSettings = AppCorSettings.NONE) {
                 validateLockProperFormat("Проверка формата lock")
                 finishRuleValidation("Успешное завершение процедуры валидации")
             }
+            repo("Логика удаления") {
+                repoRead("Чтение объявления из БД")
+                checkLock("Проверяем консистентность по оптимистичной блокировке")
+                repoPrepareDelete("Подготовка объекта для удаления")
+                repoDelete("Удаление объявления из БД")
+            }
+            prepareResult("Подготовка ответа")
         }
         operation("Поиск правил", AppCommand.SEARCH) {
             stubs("Обработка стабов") {
@@ -156,6 +194,8 @@ class RuleProcessor(val corSettings: AppCorSettings = AppCorSettings.NONE) {
 
                 finishRuleFilterValidation("Успешное завершение процедуры валидации")
             }
+            repoSearch("Поиск правила в БД по фильтру")
+            prepareResult("Подготовка ответа")
         }
     }.build()
 }

@@ -10,7 +10,7 @@ object AppRuleStub {
 
     fun prepareResult(block: AppRule.() -> Unit): AppRule = get().apply(block)
 
-    fun prepareSearchList(filter: String) = listOf(
+    fun prepareSearchList(filter: String, grade: AppGrade = AppGrade.A1) = listOf(
         appRule(RULE_STUB, "001", filter, AppGrade.A1),
         appRule(RULE_STUB, "002", filter, AppGrade.A2),
         appRule(RULE_STUB, "003", filter, AppGrade.B1),

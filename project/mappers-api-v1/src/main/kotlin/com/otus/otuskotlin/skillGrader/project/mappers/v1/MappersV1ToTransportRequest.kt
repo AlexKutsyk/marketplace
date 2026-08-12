@@ -1,9 +1,9 @@
 package com.otus.otuskotlin.skillGrader.project.mappers.v1
 
-import com.otus.otuskotlin.skillGrader.api.v1.models.RuleCreateObject
-import com.otus.otuskotlin.skillGrader.api.v1.models.RuleDeleteObject
-import com.otus.otuskotlin.skillGrader.api.v1.models.RuleReadObject
-import com.otus.otuskotlin.skillGrader.api.v1.models.RuleUpdateObject
+import com.otus.otuskotlin.skillGrader.project.api.v1.models.RuleCreateObject
+import com.otus.otuskotlin.skillGrader.project.api.v1.models.RuleDeleteObject
+import com.otus.otuskotlin.skillGrader.project.api.v1.models.RuleReadObject
+import com.otus.otuskotlin.skillGrader.project.api.v1.models.RuleUpdateObject
 import com.otus.otuskotlin.skillGrader.project.common.models.AppRule
 import com.otus.otuskotlin.skillGrader.project.common.models.AppRuleLock
 
@@ -22,6 +22,7 @@ fun AppRule.toTransportReadRule() = RuleReadObject(
 )
 
 fun AppRule.toTransportUpdateRule() = RuleUpdateObject(
+    id = id.toTransportRule(),
     name = name,
     grade = grade.toTransportRule(),
     minGrammarPercent = minGrammarPercent,

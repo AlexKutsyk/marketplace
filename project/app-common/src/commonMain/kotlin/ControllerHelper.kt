@@ -1,5 +1,3 @@
-package ru.otus.otuskotlin.marketplace.app.common
-
 import com.otus.otuskotlin.skillGrader.project.app.common.IServiceSettings
 import com.otus.otuskotlin.skillGrader.project.common.AppContext
 import com.otus.otuskotlin.skillGrader.project.common.helpers.asAppError

@@ -1,21 +1,21 @@
 package com.otus.otuskotlin.skillGrader.project.mappers.v1
 
+import com.otus.otuskotlin.skillGrader.project.api.v1.models.Grade
+import com.otus.otuskotlin.skillGrader.project.api.v1.models.IRequest
+import com.otus.otuskotlin.skillGrader.project.api.v1.models.RuleCreateObject
+import com.otus.otuskotlin.skillGrader.project.api.v1.models.RuleCreateRequest
+import com.otus.otuskotlin.skillGrader.project.api.v1.models.RuleDebug
+import com.otus.otuskotlin.skillGrader.project.api.v1.models.RuleDeleteObject
+import com.otus.otuskotlin.skillGrader.project.api.v1.models.RuleDeleteRequest
+import com.otus.otuskotlin.skillGrader.project.api.v1.models.RuleReadObject
+import com.otus.otuskotlin.skillGrader.project.api.v1.models.RuleReadRequest
+import com.otus.otuskotlin.skillGrader.project.api.v1.models.RuleRequestDebugMode
+import com.otus.otuskotlin.skillGrader.project.api.v1.models.RuleRequestDebugStubs
+import com.otus.otuskotlin.skillGrader.project.api.v1.models.RuleSearchFilter
+import com.otus.otuskotlin.skillGrader.project.api.v1.models.RuleSearchRequest
+import com.otus.otuskotlin.skillGrader.project.api.v1.models.RuleUpdateObject
+import com.otus.otuskotlin.skillGrader.project.api.v1.models.RuleUpdateRequest
 import com.otus.otuskotlin.skillGrader.project.mappers.v1.exceptions.UnknownRequestClass
-import com.otus.otuskotlin.skillGrader.api.v1.models.Grade
-import com.otus.otuskotlin.skillGrader.api.v1.models.IRequest
-import com.otus.otuskotlin.skillGrader.api.v1.models.RuleCreateObject
-import com.otus.otuskotlin.skillGrader.api.v1.models.RuleCreateRequest
-import com.otus.otuskotlin.skillGrader.api.v1.models.RuleDebug
-import com.otus.otuskotlin.skillGrader.api.v1.models.RuleDeleteObject
-import com.otus.otuskotlin.skillGrader.api.v1.models.RuleDeleteRequest
-import com.otus.otuskotlin.skillGrader.api.v1.models.RuleReadObject
-import com.otus.otuskotlin.skillGrader.api.v1.models.RuleReadRequest
-import com.otus.otuskotlin.skillGrader.api.v1.models.RuleRequestDebugMode
-import com.otus.otuskotlin.skillGrader.api.v1.models.RuleRequestDebugStubs
-import com.otus.otuskotlin.skillGrader.api.v1.models.RuleSearchFilter
-import com.otus.otuskotlin.skillGrader.api.v1.models.RuleSearchRequest
-import com.otus.otuskotlin.skillGrader.api.v1.models.RuleUpdateObject
-import com.otus.otuskotlin.skillGrader.api.v1.models.RuleUpdateRequest
 import com.otus.otuskotlin.skillGrader.project.common.AppContext
 import com.otus.otuskotlin.skillGrader.project.common.models.AppCommand
 import com.otus.otuskotlin.skillGrader.project.common.models.AppGrade
@@ -41,9 +41,7 @@ private fun String?.toRuleId() = this?.let {
     )
 } ?: AppRuleId.NONE
 private fun String?.toRuleLock() = this?.let {
-    AppRuleLock(
-        it
-    )
+    AppRuleLock(it)
 } ?: AppRuleLock.NONE
 
 private fun RuleDebug?.transportToWorkMode(): AppWorkMode = when (this?.mode) {
@@ -76,9 +74,7 @@ fun AppContext.fromTransport(request: RuleReadRequest) {
 }
 
 private fun RuleReadObject?.toInternal(): AppRule = if (this != null) {
-    AppRule(
-        id = id.toRuleId()
-    )
+    AppRule(id = id.toRuleId())
 } else {
     AppRule()
 }

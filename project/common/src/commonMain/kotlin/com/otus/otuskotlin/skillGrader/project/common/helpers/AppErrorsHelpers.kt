@@ -22,7 +22,13 @@ fun AppContext.fail(error: AppError) {
     state = AppState.FAILING
 }
 
+fun AppContext.fail(errors: Collection<AppError>) {
+    addErrors(errors)
+    state = AppState.FAILING
+}
+
 private fun AppContext.addError(error: AppError) = errors.add(error)
+private fun AppContext.addErrors(error: Collection<AppError>) = errors.addAll(error)
 
 fun errorValidation(
     field: String,
@@ -39,4 +45,16 @@ fun errorValidation(
     group = "validation",
     message = "Validation error for field $field: $description",
     level = level,
+)
+
+inline fun errorSystem(
+    violationCode: String,
+    level: LogLevel = LogLevel.ERROR,
+    e: Throwable,
+) = AppError(
+    code = "system-$violationCode",
+    group = "system",
+    message = "System error occurred. Our stuff has been informed, please retry later",
+    level = level,
+    exception = e,
 )

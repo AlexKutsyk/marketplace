@@ -3,7 +3,7 @@ plugins {
     alias(libs.plugins.kotlin.multiplatform) apply false
 }
 
-group = "com.otus.otuskotlin.skillGrader"
+group = "com.otus.otuskotlin.skillGrader.project"
 version = "0.0.1"
 
 val specDir = "${rootDir}/../core/specs/specs"

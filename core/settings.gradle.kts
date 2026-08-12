@@ -23,3 +23,4 @@ pluginManagement {
 include(":dcompose")
 include(":specs")
 include(":swagger")
+include(":migration-pg")

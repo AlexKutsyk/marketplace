@@ -9,12 +9,12 @@ import com.otus.otuskotlin.skillGrader.project.ktor.base.KtorWsSessionV1
 import com.otus.otuskotlin.skillGrader.project.mappers.v1.fromTransport
 import com.otus.otuskotlin.skillGrader.project.mappers.v1.toTransportInit
 import com.otus.otuskotlin.skillGrader.project.mappers.v1.toTransportRule
+import controllerHelper
 import io.ktor.websocket.*
 import kotlinx.coroutines.channels.ClosedReceiveChannelException
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.receiveAsFlow
-import ru.otus.otuskotlin.marketplace.app.common.controllerHelper
 
 import kotlin.reflect.KClass
 

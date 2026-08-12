@@ -1,1 +1,1 @@
-package ru.otus.otuskotlin.marketplace.app.common
+package com.otus.otuskotlin.skillGrader.project.app.common

@@ -50,13 +50,13 @@ class MapperTest {
             state = AppState.RUNNING,
         )
 
-        val req = context.toTransportRule() as RuleCreateResponse
+        val request = context.toTransportRule() as RuleCreateResponse
 
-        assertEquals(req.rule, AppRuleStub.get().toTransportRule())
-        assertEquals(1, req.errors?.size)
-        assertEquals("error", req.errors?.firstOrNull()?.code)
-        assertEquals("request", req.errors?.firstOrNull()?.group)
-        assertEquals("name", req.errors?.firstOrNull()?.field)
-        assertEquals("wrong name", req.errors?.firstOrNull()?.message)
+        assertEquals(request.rule, AppRuleStub.get().toTransportRule())
+        assertEquals(1, request.errors?.size)
+        assertEquals("error", request.errors?.firstOrNull()?.code)
+        assertEquals("request", request.errors?.firstOrNull()?.group)
+        assertEquals("name", request.errors?.firstOrNull()?.field)
+        assertEquals("wrong name", request.errors?.firstOrNull()?.message)
     }
 }
